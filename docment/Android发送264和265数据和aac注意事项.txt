@@ -1,0 +1,27 @@
+ 
+1:264数据
+protected void inputH264Nalu(int channel, int stream, byte[] nalu, int naluLength)
+调用此接口发送264数据，对接用户自己把264数据按照接口数据要求放入即可
+注意事项:
+输入264数据时，要把  SPS, PPS, SEI, IDR 合并成一帧，或者把 SPS, PPS, IDR合并成一帧
+264数据是以0x00, 0x00, 0x00, 0x01开头的数据
+参考文档:
+https://blog.csdn.net/skdkjzz/article/details/39697977
+
+2:aac数据
+
+//				//设置音频格式 
+//				//#define PLAY_A_TYPE_AAC_8KBPS				12
+//				//#define PLAY_A_TYPE_AAC_16KBPS				13
+				mNetBind.setMediaInfo(12, 0, 0);
+最后调用: protected void inputAacData(int channel, byte aac[], int length)
+
+3:265数据
+protected void inputH265Nalu(int channel, int stream, byte[] nalu, int naluLength)
+调用此接口发送265数据，对接用户自己把265数据按照接口数据要求放入即可
+//265数据是以0x00, 0x00, 0x00, 0x01开头的数据
+/***i帧:
+	vps（00 00 00 01 40） sps（00 00 00 01 42） pps （00 00 00 01 44）  idr（00 00 00 01 26）
+	p帧:
+	00 00 00 01 02
+**/

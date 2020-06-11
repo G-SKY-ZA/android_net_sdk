@@ -1,0 +1,175 @@
+﻿
+//报警定义
+public static final int TTX_ALARM_TYPE_URGENCY_BUTTON = 2;		//紧急按钮报警AlarmInfo为按钮编号
+public static final int TTX_ALARM_TYPE_CUSTOM = 113;	//自定义报警
+public static final int CUSTOM_ALARM_TYPE_REPORT_VIDEO		= 44;	//上报实时视频（客户端做主动视频弹出）
+public static final int CUSTOM_ALARM_TYPE_STOP_REPORT_VIDEO	= 45;	//停止上报实时视频（客户端把主动弹出的视频关闭掉）
+public static final int TTX_ALARM_TYPE_UPLOAD_FILE = 109;		//紧急按钮报警AlarmInfo为按钮编号
+public static final int TTX_ALARM_TYPE_SHAKE = 3;		//振动报警AlarmInfo（加速度报警，bit0：X方向,bit1：Y方向,bit2：Z方向，bit3：碰撞,bit4：侧翻）
+public static final int TTX_ALARM_TYPE_END_SHAKE = 53;		//振动报警结束
+public static final int TTX_ALARM_TYPE_TPMS = 166;		//胎压报警
+
+public static final int TTX_ALARM_TYPE_OVERSPEED = 11;		//超速报警,  param[0]当前速度9900=99公里, param[1]速度最低值, param[2]速度最高值, param[3]持续时间, alarmInfo: 1低速,2超速,3紧急加速,4紧急减速
+
+
+public static final int TTX_ALARM_TYPE_ACC = 16;		//ACC报警
+//adas
+//疲劳一级
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_START = 101;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_END = 102;
+
+//疲劳二级
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_TWO_LEVEL_START = 103;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_TWO_LEVEL_END = 104;
+
+//离开驾驶视线（左顾右盼）
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_LEAVE_DRIVING_SIGHT_START = 105;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_LEAVE_DRIVING_SIGHT_END = 106;
+
+
+//打哈欠
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_YAWN_START = 107;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_YAWN_END = 108;
+
+
+//打电话
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_CALL_START = 109;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_CALL_END = 110;
+
+
+//不系安全带
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_NOT_WEAR_SEAT_BELT_START = 111;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_NOT_WEAR_SEAT_BELT_END = 112;
+
+
+//吸烟
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_SMOKIng_START = 113;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_SMOKIng_END = 114;
+
+//遮挡摄像头
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_BLOCK_CAMERA_START = 115;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_BLOCK_CAMERA_END = 116;
+
+//设备故障
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_DEV_FAILURE_START = 117;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_DEV_FAILURE_END = 118;
+
+
+//车道偏移
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_LANE_OFFSET_START = 119;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_LANE_OFFSET_END = 120;
+
+//前车近距
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_CLOSE_CAR_START = 121;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_CLOSE_CAR_END = 122;
+
+
+//前车碰撞危险
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_DANGER_COLLISION_CAR_START = 123;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_DANGER_COLLISION_CAR_END = 124;
+
+
+//车辆侧倾
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_VEHICLE_ROLL_START = 125;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_VEHICLE_ROLL_END = 126;
+
+//急刹车
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_BRAKING_START = 127;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_BRAKING_END = 128;
+
+
+//离岗
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_OUT_WORK_START  =  129;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_OUT_WORK_END    =  130;
+
+//急加速
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_ACCELERATION_START =	131;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_ACCELERATION_END   =  132;
+
+//急减速
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_DECELERATION_START =	133;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_DECELERATION_END   =	134;
+
+//急左转弯
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_TURNLEFT_START     =	135;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_TURNLEFT_END	     =	136;
+
+//急右转弯
+public static final intTTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_TURNRIGHT_START     =	137;
+public static final intTTX_ALARM_CUSTOM_ADAS_ALARM_RAPID_TURNRIGHT_END       =	138;
+
+//低头
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_HEAD_DOWN_START	     =  139;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_HEAD_DOWN_END	     =  140;
+
+//超速预警
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_OVERSPEED_WARNING_START  =	141;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_OVERSPEED_WARNING_END    =	142;
+
+//面向报警
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FACE_WARNIN_START	     =	143;
+public static final int TTX_ALARM_CUSTOM_ADAS_ALARM_FACE_WARNIN_END	     =  144;
+
+//人脸识别
+ public static final int TTX_ALARM_CUSTOM_TYPE_PRESON = 2;
+
+
+
+**********************************************接口调用示例********************************************************
+调用接口：mNetBind.AddAlarmInfo();
+
+//不同的nAlarmType后面对应 的nAlarmInfo,param1,等参数都不相同
+//示例1   主动上报实时视频
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_CUSTOM, CUSTOM_ALARM_TYPE_REPORT_VIDEO, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+//示例2  主动上报紧急按钮报警
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_URGENCY_BUTTON, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+//示例3  上报报警录像文件也是通过此接口来实现
+//		录像文件需要上传AlarmInfo类型1表示JPG图片，2表示录像文件 5表示录音文件,  szDesc为文件绝对路径
+//		param[0] = 文件长度，param[1] = 文件类型(常规或者报警)，param[2] = 文件时长, param[3] = 通道
+//		param[4] = 对应的报警类型alarmtype，param[5]对应的alarmInfo
+//		szReserve = 文件开始时间，如: 2013-06-13 100001
+//		当为JPG图片时，文件时长无效  /mnt/sdcard/1234.mp4
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_UPLOAD_FILE, 1, 102400, 1, 25, 0, TTX_ALARM_TYPE_CUSTOM, 
+		TTX_ALARM_CUSTOM_ADAS_ALARM_LANE_OFFSET_START, 0, 0, 0, "/snapshot/upload/20171123-165020.jpg");
+
+//振动报警AlarmInfo（加速度报警，bit0：X方向,bit1：Y方向,bit2：Z方向，bit3：碰撞,bit4：侧翻）
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_SHAKE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+//振动报警结束
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_END_SHAKE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+//adas报警 /疲劳一级 开始  其他报警同下
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_CUSTOM, TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_START, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+//adas报警 /疲劳一级 结束 其他报警同下
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_CUSTOM, TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_END, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+
+//胎压报警
+//alarmInfo  TPMS报警类型（1表示电池电压警告，2-胎压过高，3-胎压过低 4-漏气 5-温度异常（只有过高））
+//	param[0] 当前温度 如: 200 = 20度
+//			param[1] 当前胎压 如: 25 = 2.5P
+//			param[2] 当前电压 如: 102=10.2V
+//			param[3] 传感器编号（01表示TPMS左1，02表示TPMS左2，03表示TPMS左3，04表示TPMS左4，11表示TPMS右1，12表示TPMS右2，13表示TPMS右3，14表示TPMS右4）
+
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_TPMS, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+
+//超速报警
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_OVERSPEED, 2, 9900, 0, 0, 0, 0, 0, 0, 0, 0, "");
+
+
+
+
+//adas报警关联图片示例
+先发
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_CUSTOM, TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_START , 0, 0, 0, 0, 0, 0, 0, 0, 0, "");
+返回成功(0)再发送
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_UPLOAD_FILE, 1, 608310, 1, 0, 0, TTX_ALARM_TYPE_CUSTOM, TTX_ALARM_CUSTOM_ADAS_ALARM_FATIGUE_ONE_LEVEL_START , 0, 0, 0, "/sdcard/gdispatch/20180522-093520.jpg");
+
+
+
+//人脸识别图片上传
+mNetBind.AddAlarmInfo(TTX_ALARM_TYPE_UPLOAD_FILE, 1, 102400, 1, 25, 0, TTX_ALARM_TYPE_CUSTOM, 
+				TTX_ALARM_CUSTOM_TYPE_PRESON, 0, 0, 0, "/snapshot/upload/20171123-165020.jpg");
+
+
+//示例2  acc报警
+mNetBind.AddAlarmInfoTTX_ALARM_TYPE_ACC 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "123456789");
+
+

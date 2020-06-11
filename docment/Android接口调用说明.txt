@@ -1,0 +1,84 @@
+demo 为示例demo
+
+接口定义
+
+a、初始化首先绑定服务
+//看门狗服务，会守护net.babelstar.gdispatch.remoteservice服务，当net.babelstar.gdispatch.remoteservice当机后，会再把net.babelstar.gdispatch.remoteservice重新启动
+Intent intentDeamon = new Intent("net.babelstar.gdispatch.dogservice");		
+//intentDeamon.setPackage("net.babelstar.gdispatch"); 
+startService(intentDeamon);
+//开始ttx网络服务，此服务主要与ttx cmsv6 server进行网络通信，进行音视频传输，位置上报等业务
+Intent intent = new Intent("net.babelstar.gdispatch.remoteservice");
+//执法仪版本用的包名
+intent.setPackage("net.babelstar.gdispatch.police");
+bindService(intent, mServerConnection, BIND_AUTO_CREATE);
+
+b、服务bind成功以后初始化配置
+设置通道数:mNetBind.setChnCount(2);
+app是否自动操作摄像头:mNetBind.setUsedCamera(false);
+
+acc状态：mNetBind.SetAccStatus(true);（true打开，false关闭）
+
+设置登录ip和账号:mNetBind.setServerAndAccount("120.26.98.110", "30003");
+
+设置gps间隔：mNetBind.setGpsInterval(10);
+
+设置不进行主子码流录像:mNetBind.setRecord(false, false);
+
+如实时视频传输输入264码流，设置不进行视频编码:setVideoEncode(false);
+
+设置预览大小，如果实时传输直接送264则不需要配置:initCameraPreview（）;
+
+设置音频传输格式setMediaInfo(); 目前支持aac 8k， 16k
+
+
+c、实时音视频,监听和对讲
+备注:与服务通信通过广播实现
+//视频预览
+public static final String MESSAGE_RECEIVED_LIVE_ACTION = "net.babelstar.MESSAGE_RECEIVED_LIVE";	//视频预览请求
+public static final String START_MESSAGE = "start";
+public static final String TYPE_MESSAGE = "type";
+public static final String CHANNEL_MESSAGE = "channel";
+public static final String STREAM_MESSAGE = "stream";
+//Type
+public static final int TTX_MEDIA_AV		= 1;		//实时视频
+public static final int TTX_MEDIA_TALKBACK	= 2;		//对讲
+public static final int TTX_MEDIA_LISTEN	= 3;		//监听
+
+收到平台下发音视频请求广播
+如送264数据进来，上层不停调用：protected void inputH264Nalu(int channel, int stream, byte[] nalu, int naluLength) ,
+送264数据进来。
+音频数据调用: protected void inputAacData(int channel, byte aac[], int length) ;
+具体264数据规则，参考Android发送264数据和aac注意事项.txt 文档
+
+监听和对讲
+监听和对讲每次只能存在一个
+监听和对讲输入音频:protected void inputAacData(int channel, byte aac[], int length) ;
+备注:对讲平台下发音频，我们服务会自行解码播放
+
+d、报警信息上报和报警文件上传
+调用:mNetBind.AddAlarmInfo（）
+具体接口调用参照:Android报警文档.txt 文档
+
+
+e、升级，前端抓拍,下发文字信息参数demo中示例
+
+f、集群对讲
+//集群对讲相关消息
+
+public static final String MESSAGE_RECEIVED_PTT_TALK_ACTION = "net.babelstar.MESSAGE_RECEIVED_PTT_TALK_ACTION";
+public static final String MESSAGE_PTT_PARAM_GROUP = "groupId";	//群组编号(int)
+public static final String MESSAGE_PTT_PARAM_TERMINAL = "terminalId";	//终端ID(int)
+public static final String MESSAGE_PTT_PARAM_START = "start";	//开始(boolean)
+
+//1、处理其它用户讲话，监听MESSAGE_RECEIVED_PTT_TALK_ACTION，消息，这个是群组用户讲话的消息
+//		讲话时，cmscruise.apk会自行播放ptt的声音
+//2、发送讲话请求，先PttRequireTalk讲话请求，然后不停调用 PttInputAacFrame送声音，最后停止调用PttRequireTalk
+//备注
+//	faac音频编码测试：开启音频编码后，首次需要送500毫秒(8192个pcm)的音频后，编码接口才会生成音频数据，相当于音频编码器里面有500毫秒的音频数据缓存
+//		android系统aac硬编码未作测试，判断编码器音频缓存的方法：增加打印，判断送多少次的pcm，编码才会开始有aac音频数据产生，如果是8000的采样率，每秒会有 16000个pcm数据
+//		单只考虑集群对讲，讲话结束前，人为制造送静音的8192个pcm数据进去，也可以把缓存的音频给编码出来了
+//		考虑实时音视频和集群对讲并存的情况，延时500毫秒停止
+
+参照demo中的:protected void DoPttTalk()和protected void recvPttTalk(int nGroupId, int nTerminalID, boolean start)
+
