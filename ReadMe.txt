@@ -1,7 +1,5 @@
-请查看docment文档
-2020-01-03
-1:将以前es工程替换成as工程
-2:增加265发送接口
-3:增加设置音视频类型接口
-2020-01-10
-1:增加视频打开提示状态
+Added functionality
+
+1. 265 send interface added.
+2. setting audio and video type interface added.
+3: video opening prompt status added.
